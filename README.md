@@ -2,47 +2,49 @@
 
 **B站数据 API · B站视频搜索 · B站评论采集 · UP主主页和投稿 · B站热门**
 
-这个仓库是 [DataXAPI](https://dataxapi.com/zh/?ref=gh-bilibili-api) 的B站接口说明和能直接跑的脚本：9 个接口，一把 Key，按次付费，$0.002 起，**出错不收费**。不用登录平台账号，不用 Cookie，不开浏览器。
+这个仓库是 [DataXAPI](https://dataxapi.com/zh/?ref=gh-bilibili-api) 的B站接口说明和能直接跑的脚本：11 个接口，一把 Key，按次付费，$0.002 起，**出错不收费**。不用登录平台账号，不用 Cookie，不开浏览器。
 
 [免费拿 Key：试用最多 333 次，不用绑卡](https://dataxapi.com/zh/signin/?button=gh-bilibili-api) · [全部接口文档](https://dataxapi.com/zh/apis/?ref=gh-bilibili-api) · [接进 AI（MCP）](#接进-aimcp) · [English](#english)
 
 最低充 $10，余额不过期；支持支付宝、微信支付和银行卡。
 
-## 全部 9 个接口
+## 全部 11 个接口
 
 ### 视频
 
 | 接口 | 拿到什么 | 价格 | 编号 |
 |---|---|---|---|
-| [B站视频搜索](https://dataxapi.com/zh/apis/bilibili/videos/search/) | 按搜索词取一页 B 站视频，可按相关度、最新或播放最多排：标题、UP 主、播放、点赞、收藏、评论数、时长。 | $0.002 一次 | `bilibili.videos.search` |
-| [B站视频评论](https://dataxapi.com/zh/apis/bilibili/videos/comments/list/) | 按 BV 号取一页 B 站视频评论，可按热门或最新排：正文、评论者和他的等级、点赞数、回复数、发布时间。 | $0.002 一次 | `bilibili.videos.comments.list` |
-| [B站视频详情](https://dataxapi.com/zh/apis/bilibili/videos/get/) | 按 BV 号或链接取一个 B 站视频：标题、简介、UP 主、播放、点赞、投币、收藏、弹幕数、时长、标签、分区、IP 属地，以及取字幕和弹幕要用的 cid。 | $0.002 一次 | `bilibili.videos.get` |
-| [B站综合热门](https://dataxapi.com/zh/apis/bilibili/videos/trending/) | 取一页 B 站综合热门视频：标题、简介、UP 主、播放、点赞、投币、收藏、弹幕数、时长、分区、IP 属地、推荐理由。 | $0.002 一次 | `bilibili.videos.trending` |
+| [B站视频搜索](https://dataxapi.com/zh/apis/bilibili/videos/search/?ref=gh-bilibili-api) | 按搜索词取一页 B 站视频，可按相关度、最新或播放最多排：标题、UP 主、播放、点赞、收藏、评论数、时长。 | $0.002 一次 | `bilibili.videos.search` |
+| [B站视频评论](https://dataxapi.com/zh/apis/bilibili/videos/comments/list/?ref=gh-bilibili-api) | 按 BV 号取一页 B 站视频评论，可按热门或最新排：正文、评论者和他的等级、点赞数、回复数、发布时间。 | $0.002 一次 | `bilibili.videos.comments.list` |
+| [B站视频详情](https://dataxapi.com/zh/apis/bilibili/videos/get/?ref=gh-bilibili-api) | 按 BV 号或链接取一个 B 站视频：标题、简介、UP 主、播放、点赞、投币、收藏、弹幕数、时长、标签、分区、IP 属地，以及取字幕和弹幕要用的 cid。 | $0.002 一次 | `bilibili.videos.get` |
+| [B站视频转文字（文案提取、逐字稿）](https://dataxapi.com/zh/apis/bilibili/videos/transcript/get/?ref=gh-bilibili-api) | 给一个 B 站视频的链接或 BV 号，返回视频里说的话：全文、每一句的起止时间和现成的 SRT 字幕，连同标题、UP 主和时长；可以区分说话人。多 P 视频转第一 P。每次收费，识别语音的另按视频分钟数收，没人说话不收。只接 5 分钟以内的视频。超过 5 分钟、2 小时以内的视频先回一个凭证（job），过一会儿带着它再调这个接口取文字，价格一样，只在取到文字时收。 | $0.004 一次 | `bilibili.videos.transcript.get` |
+| [B站综合热门](https://dataxapi.com/zh/apis/bilibili/videos/trending/?ref=gh-bilibili-api) | 取一页 B 站综合热门视频：标题、简介、UP 主、播放、点赞、投币、收藏、弹幕数、时长、分区、IP 属地、推荐理由。 | $0.002 一次 | `bilibili.videos.trending` |
+| [B 站视频和音频下载地址](https://dataxapi.com/zh/apis/bilibili/videos/media/get/?ref=gh-bilibili-api) | 给一个 B 站视频的 BV 号或链接，返回视频的各档清晰度和音频的各档音质，分开给（带宽高、编码、码率、备用地址和过期时间）；每个地址都要带请求头 Referer: https://www.bilibili.com 去取，音视频用 ffmpeg 合成一个文件，过期了再调一次即可。 | $0.002 一次 | `bilibili.videos.media.get` |
 
 ### 评论
 
 | 接口 | 拿到什么 | 价格 | 编号 |
 |---|---|---|---|
-| [B站评论回复](https://dataxapi.com/zh/apis/bilibili/comments/replies/list/) | 按评论编号和它所在视频的 BV 号取一页回复：正文、回复者、点赞数、回复的是哪一条、发布时间。 | $0.002 一次 | `bilibili.comments.replies.list` |
+| [B站评论回复](https://dataxapi.com/zh/apis/bilibili/comments/replies/list/?ref=gh-bilibili-api) | 按评论编号和它所在视频的 BV 号取一页回复：正文、回复者、点赞数、回复的是哪一条、发布时间。 | $0.002 一次 | `bilibili.comments.replies.list` |
 
 ### 热榜和趋势
 
 | 接口 | 拿到什么 | 价格 | 编号 |
 |---|---|---|---|
-| [B站热搜榜](https://dataxapi.com/zh/apis/bilibili/trends/list/) | 取 B 站当前的热搜词榜，最多 50 个词，带名次、热度和榜单上显示的那句话。 | $0.002 一次 | `bilibili.trends.list` |
+| [B站热搜榜](https://dataxapi.com/zh/apis/bilibili/trends/list/?ref=gh-bilibili-api) | 取 B 站当前的热搜词榜，最多 50 个词，带名次、热度和榜单上显示的那句话。 | $0.002 一次 | `bilibili.trends.list` |
 
 ### 账号
 
 | 接口 | 拿到什么 | 价格 | 编号 |
 |---|---|---|---|
-| [B站用户资料](https://dataxapi.com/zh/apis/bilibili/users/get/) | 按用户编号取 B 站用户资料：昵称、签名、头像、是否认证和认证说明、粉丝数、关注数、投稿视频数、累计获赞、账号等级、直播间链接。 | $0.002 一次 | `bilibili.users.get` |
-| [B站用户投稿](https://dataxapi.com/zh/apis/bilibili/users/videos/list/) | 按用户编号取一页 B 站用户投稿的视频，新的在前：标题、简介、播放数、评论数、弹幕数、时长、发布时间。 | $0.002 一次 | `bilibili.users.videos.list` |
+| [B站用户资料](https://dataxapi.com/zh/apis/bilibili/users/get/?ref=gh-bilibili-api) | 按用户编号取 B 站用户资料：昵称、签名、头像、是否认证和认证说明、粉丝数、关注数、投稿视频数、累计获赞、账号等级、直播间链接。 | $0.002 一次 | `bilibili.users.get` |
+| [B站用户投稿](https://dataxapi.com/zh/apis/bilibili/users/videos/list/?ref=gh-bilibili-api) | 按用户编号取一页 B 站用户投稿的视频，新的在前：标题、简介、播放数、评论数、弹幕数、时长、发布时间。 | $0.002 一次 | `bilibili.users.videos.list` |
 
 ### 备用版：原接口取不到时改调
 
 | 接口 | 拿到什么 | 价格 | 编号 |
 |---|---|---|---|
-| [B站用户投稿（备用版）](https://dataxapi.com/zh/apis/bilibili/backup/users/videos/list/) | B站用户投稿的备用版，原接口取不到时改调：参数和返回相同（不含简介和评论数），价格更高。 | $0.03 一次 | `bilibili.backup.users.videos.list` |
+| [B站用户投稿（备用版）](https://dataxapi.com/zh/apis/bilibili/backup/users/videos/list/?ref=gh-bilibili-api) | B站用户投稿的备用版，原接口取不到时改调：参数和返回相同（不含简介和评论数），价格更高。 | $0.03 一次 | `bilibili.backup.users.videos.list` |
 
 ## 真实返回长什么样
 
@@ -158,4 +160,4 @@ No platform account, cookie or QR login. Paid per call from $0.002; errors are n
 
 MIT
 
-<sub>接口和价格取自 DataXAPI 的目录 720fc3ea8dadb865、价格版本 19；以 [dataxapi.com/zh/apis](https://dataxapi.com/zh/apis/?ref=gh-bilibili-api) 为准。</sub>
+<sub>接口和价格取自 DataXAPI 的目录 dc959672dd18e2d0、价格版本 21；以 [dataxapi.com/zh/apis](https://dataxapi.com/zh/apis/?ref=gh-bilibili-api) 为准。</sub>

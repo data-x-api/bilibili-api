@@ -21,7 +21,7 @@ SOURCE = "gh-bilibili-api"
 SIGN_UP = f"https://dataxapi.com/zh/signin/?button={SOURCE}"
 ENDPOINT = "bilibili.videos.search"
 PARAM = "query"
-PRICE = Decimal("0.002")  # 现价见 https://dataxapi.com/zh/apis/bilibili/videos/search/
+PRICE = Decimal("0.002")  # 现价见 https://dataxapi.com/zh/apis/bilibili/videos/search/?ref=gh-bilibili-api
 
 
 def flatten(item: dict, prefix: str = "") -> dict:
