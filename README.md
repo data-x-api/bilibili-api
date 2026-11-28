@@ -2,13 +2,13 @@
 
 **B站数据 API · B站视频搜索 · B站评论采集 · UP主主页和投稿 · B站热门**
 
-这个仓库是 [DataXAPI](https://dataxapi.com/zh/?ref=gh-bilibili-api) 的B站接口说明和能直接跑的脚本：11 个接口，一把 Key，按次付费，$0.002 起，**出错不收费**。不用登录平台账号，不用 Cookie，不开浏览器。
+这个仓库是 [DataXAPI](https://dataxapi.com/zh/?ref=gh-bilibili-api) 的B站接口说明和能直接跑的脚本：12 个接口，一把 Key，按次付费，$0.002 起，**出错不收费**。不用登录平台账号，不用 Cookie，不开浏览器。
 
 [免费拿 Key：试用最多 333 次，不用绑卡](https://dataxapi.com/zh/signin/?button=gh-bilibili-api) · [全部接口文档](https://dataxapi.com/zh/apis/?ref=gh-bilibili-api) · [接进 AI（MCP）](#接进-aimcp) · [English](#english)
 
 最低充 $10，余额不过期；支持支付宝、微信支付和银行卡。
 
-## 全部 11 个接口
+## 全部 12 个接口
 
 ### 视频
 
@@ -39,6 +39,7 @@
 |---|---|---|---|
 | [B站用户资料](https://dataxapi.com/zh/apis/bilibili/users/get/?ref=gh-bilibili-api) | 按用户编号取 B 站用户资料：昵称、签名、头像、是否认证和认证说明、粉丝数、关注数、投稿视频数、累计获赞、账号等级、直播间链接。 | $0.002 一次 | `bilibili.users.get` |
 | [B站用户投稿](https://dataxapi.com/zh/apis/bilibili/users/videos/list/?ref=gh-bilibili-api) | 按用户编号取一页 B 站用户投稿的视频，新的在前：标题、简介、播放数、评论数、弹幕数、时长、发布时间。 | $0.002 一次 | `bilibili.users.videos.list` |
+| [B站UP主搜索](https://dataxapi.com/zh/apis/bilibili/users/search/?ref=gh-bilibili-api) | 按搜索词取一页 B 站 UP 主：用户编号（mid）、名字、头像、粉丝数。拿到 mid 后可以取 UP 主资料和投稿视频。 | $0.002 一次 | `bilibili.users.search` |
 
 ### 备用版：原接口取不到时改调
 
@@ -160,4 +161,4 @@ No platform account, cookie or QR login. Paid per call from $0.002; errors are n
 
 MIT
 
-<sub>接口和价格取自 DataXAPI 的目录 0264e2d6dd4ff743、价格版本 23；以 [dataxapi.com/zh/apis](https://dataxapi.com/zh/apis/?ref=gh-bilibili-api) 为准。</sub>
+<sub>接口和价格取自 DataXAPI 的目录 830e89056c23be6e、价格版本 40；以 [dataxapi.com/zh/apis](https://dataxapi.com/zh/apis/?ref=gh-bilibili-api) 为准。</sub>
